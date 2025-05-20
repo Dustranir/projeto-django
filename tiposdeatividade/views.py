@@ -1,4 +1,4 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import HttpResponse , render
 
 # Create your views here.
 
@@ -10,4 +10,7 @@ def exibe_mensagem(request):
     return HttpResponse(t_html)
 
 #'<html><body>Ola</body></html>'
+
+def test_render (request):
+    return render (request, 'escola.html')
 
