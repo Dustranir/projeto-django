@@ -25,4 +25,4 @@ class Instrutor(models.Model):
 
 
     def __str__(self):
-        return f'{self.matricula} - {self.nome}'
+        return f'{self.id} - {self.nome}'
