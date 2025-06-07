@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from titulo.models import Titulo
 
 # Create your models here.
 class Instrutor(models.Model):
@@ -22,6 +23,11 @@ class Instrutor(models.Model):
     
     ddd = models.CharField(max_length=3,
                            help_text='Informe o DDD do telefone do Instrutor')
+    
+    codigo_titulo = models.ForeignKey(Titulo, null = True, blank=True,
+                                      related_name='titulos',
+                                      on_delete=models.SET_NULL,
+                                      db_column='titulo_codigo')
 
 
     def __str__(self):
