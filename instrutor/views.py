@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from instrutor.models import Instrutor
 
 # Create your views here.
 
@@ -7,3 +8,4 @@ def listar(request):
 
 def cadastrar(request):
     return render (request, 'instrutor/cadastrarInstrutor.html')
+
