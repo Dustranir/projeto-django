@@ -13,9 +13,12 @@ class Instrutor(models.Model):
     nome = models.CharField(max_length=70,
                             help_text='Informe o nome do Instrutor')
     
+    descricao = models.TextField(max_length=1024,
+                                 help_text='Informe a descrição do Instrutor')
+    
     data_nascimento = models.DateField(null=True,
                                        blank=True,
-                                       default=timezone.now(), 
+                                       default=timezone.now, 
                                        help_text='Informe a data de nascimento do Instrutor')
 
     telefone = models.CharField(max_length=9,
