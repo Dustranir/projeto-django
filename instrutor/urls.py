@@ -10,4 +10,5 @@ urlpatterns = [
     path('cadastrar', views.cadastrar, name='cadastrar'),
     path('carregar/<int:codigo>/', views.carregar_instrutor, name='carregar_instrutor'),
     path('atualizar/<int:codigo>/', views.atualizar, name='atualizar'),
+    path('excluir/<int:codigo>', views.excluir, name="excluir_instrutor"),
 ]

@@ -40,3 +40,10 @@ def atualizar(request, codigo):
             return render(request, 'instrutor/atualizarInstrutor.html', {'form': form, 'instrutor': instrutor})
 
     return redirect('instrutor:carregar_instrutor', codigo=codigo)
+
+# excluir um instrutor
+def excluir(request, codigo):
+    instrutor = Instrutor.objects.get(pk=codigo)
+    instrutor.delete()
+
+    return redirect('instrutor:listar')

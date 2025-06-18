@@ -81,6 +81,45 @@
                     <td> Professor Sabe-Tudo </td>
                 </tr>
             </table>
-
         </div>
+        <!-- linhas -->
+            {% for instrutor in instrutor %}
+                <tr>
+                    <td class="text-center"> {{ instrutor.codigo }} </td>
+                    <td class="text-left"> {{ instrutor.descricao }} </td> 
+                    <td>
+                        <a href="{% url 'instrutor:carregar_instrutor' instrutor.codigo %}" class="btn btn-mini"><i class="far fa-edit"></i></a>
+                        <button type="button" class="btn" role="button" data-target="#modalExcluirInstrutor"
+                                data-toggle="modal"  
+                                {% comment %} data-descricao="{{ titulo.descricao }}" {% endcomment %}
+                                data-url="{% url 'instrutor:excluir_instrutor' instrutor.codigo %}">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+
     {%endblock%}
+
+    {% block javascript_complementar %}
+    <!-- Prepara o modal com os dados da imagem do instrutor a ser excluido -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#modalExcluirInstrutor').on('show.bs.modal', function(event) {
+                var descricao = $(event.relatedTarget).data('descricao');
+                var urlExcluir = $(event.relatedTarget).data('url');
+                $("#mensagemExclusao").text("Instrutor [ " + descricao + "  ]?");
+
+                $.fn.excluirInstrutor = function() {
+                    var url = $(event.relatedTarget).data('url');
+                    location.replace(url);
+                }
+            });
+        
+            $("#btnExcluir").on('click', function() {
+                $.fn.excluirInstrutor();
+                return false;
+            });            
+        });
+    </script>
+{% endblock %}

@@ -46,6 +46,7 @@ def excluir(request, codigo):
 
     return redirect('titulo:listar')
 
+
 # carregar titulo para atualizar
 def carregar_titulo(request, codigo):
     # obter titulo a atualizar basead no codigo informado
